@@ -11,14 +11,13 @@ int main() {
                 break;
             }
         }
-        num_prime++;
-        counter++;
         if (num_prime % 10 == 0) {
             printf("%d  \n", counter);
         } else {
-            printf("%d  ", counter);
+            printf("%d", counter);
         }
+        num_prime++;
+        counter++;
     }
     return 0;
 }
-
