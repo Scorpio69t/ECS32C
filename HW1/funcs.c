@@ -9,9 +9,9 @@ int between(char lowerBound, char upperBound, char target){
     int lowerBoundAscii = (int)lowerBound;
     int upperBoundAscii = (int)upperBound;
     int targetAscii = (int)target;
-    printf("%d %d %d ", lowerBoundAscii, upperBoundAscii, targetAscii);
     if (65 <= lowerBoundAscii <= 90 &&
-    65 <= lowerBoundAscii <= 90) {
+        65 <= upperBoundAscii <= 90 &&
+        65 <= targetAscii <= 90) {
         if (lowerBoundAscii <= upperBoundAscii) {
             if (lowerBoundAscii < targetAscii < upperBoundAscii) {
                 return 1;
@@ -25,3 +25,4 @@ int between(char lowerBound, char upperBound, char target){
         return -1;
     }
 }
+
