@@ -15,7 +15,7 @@ int between(char lowerBound, char upperBound, char target)
     {
         if (lowerBoundAscii <= upperBoundAscii)
         {
-            if (lowerBoundAscii <= targetAscii <= upperBoundAscii)
+            if (lowerBoundAscii <= targetAscii && targetAscii<= upperBoundAscii)
             {
                 return 1;
             }
