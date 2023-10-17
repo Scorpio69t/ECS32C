@@ -1,6 +1,6 @@
 #include <stdio.h>
 int num_prime = 0; //The number of prime numbers so far
-int counter = 2; //The counter that increments
+int counter = 2; //The counter that increments, assuming that 0 and 1 are not prime numbers
 int half_num; //The divisor that will be used to check for prime, won't go over half of counter
 
 int main() {
