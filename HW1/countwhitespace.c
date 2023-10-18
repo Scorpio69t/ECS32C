@@ -3,7 +3,7 @@
 int main()
 {
     int c;
-    int numBlankLines = 0; // Initialize as 1 because end of file will not have a new line character
+    int numBlankLines = 0; 
     int numTabs = 0;
     int numSpaces = 0;
     while ((c = getchar()) != EOF)
@@ -22,4 +22,5 @@ int main()
         }
     }
     printf("Lines : %d\nTabs : %d\nSpaces : %d\n", numBlankLines, numTabs, numSpaces);
+    return 0;
 }
