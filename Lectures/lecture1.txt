@@ -1,0 +1,21 @@
+Friday September 29
+Widely used today, extends to newer system architectures, efficiency/performance, low level access
+C features:
+Few keywords
+Structures, unions - compound data types
+Pointers: memories and arrays
+External standard library - I/O 
+Compiles to native code
+Macro preprocessor
+C is used for systems programming:
+OSes, like Linux
+Microcontrollers: automobiles and airplanes
+Embedded processors: phones, portable electronics
+To compile a program, use gcc:
+“ -Wall” enables most compiler warnings
+“-o0” turn on optimization
+“Gdb” is a command line debugger
+“Valgrind” (HAVE TO USE IN HW) diagnose memory related problems 
+WILL BE TESTED ON GCC COMMAND LINE
+In the beginning always have “#include<stdio.h>
+Int main(void) //The void means main does not take any parameters

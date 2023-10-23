@@ -1,0 +1,9 @@
+Monday October 16
+Signed integers are one that go range from between [-2147483648 to 2147483648 ], unsigned go between [0 to 4294967295]
+A k bit can hold 2^k numbers
+Argc is a signed integer (always number of parameters plus 1)
+int* argv[]
+* lets the c compiler know that we are using a pointer
+Array of pointers
+Only thing stored in this array is the address of the first character
+The 0 at the end of the string “\0” that lets the c compiler know when a string is done

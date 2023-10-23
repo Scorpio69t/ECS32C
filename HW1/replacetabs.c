@@ -1,9 +1,10 @@
 #include <stdio.h>
 
-
-int convertToInt(char* strNum) {
+int convertToInt(char *strNum)
+{
     int convertedInt = 0;
-    while(*strNum != '\0') {
+    while (*strNum != '\0')
+    {
         convertedInt = (convertedInt * 10) + (*strNum - '0');
         strNum++;
     }
@@ -22,7 +23,9 @@ int main(int argc, char *argv[])
             {
                 putchar(' ');
             }
-        } else {
+        }
+        else
+        {
             putchar(c);
         }
     }

@@ -1,0 +1,15 @@
+Wednesday October 4
+Comments in code are essential but not liked
+Too many comments mean that your code is not clear enough
+Completely ignored by compiler
+#include stdio.h reads the contents of the header file stdio.h
+Ctype.h, math.h, stdlib.h, string.h, time.h
+Included files must be on include path
+Idirectory with gcc
+#include stdio.h searches for stdio.h first
+Bad practice to unintialize variables, don't do int n; do int n = 0;
+Functions must be declared before use, declaration called function prototype
+Void - signifies no return value/arguments
+Always return an integer, usual practice
+But may see void main (void)
+0 is false, anything else is true, but return value 0 also means success

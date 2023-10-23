@@ -1,0 +1,10 @@
+Wednesday October 18
+‘&’ gets the address of the integer
+Pointer is a variable that holds an address
+In a 32bit systems, int is 32 bits and int* is also 32 bits
+You can print addresses
+First have to dereference the pointer *(&n)
+printf(“%d\n”, *&n)
+Int zn = 0 (the null pointer)
+A WEEK FROM FRIDAY, QUIZ, MULTIPLE CHOICE, 15-30 MINUTES, BASIC C SYNTAX IN CLASS
+

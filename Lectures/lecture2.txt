@@ -1,0 +1,7 @@
+Monday October 2
+Process is a running embodiment of a script
+Typical process of a C program:
+Os loads your program in a process and gives the process a block of memory  that it divides up as shown in the diagram
+Program goes in the code section, global data goes in the data section, the stack handles function calls and local variables to functions are stored there. The heap is where we allocate memory dynamically
+Memory is like a giant array of cells that holds a byte
+8 bits only holds 256 distinct values, cant put 255 in a byte
