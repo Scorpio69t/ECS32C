@@ -1,0 +1,19 @@
+Wednesday October 25
+
+valgrind- helps you see when your code is "leaking" memory
+malloc - memory allocate
+    - ip = malloc(sizeof(int))
+
+- 3 places where data can be allocated in C, global data goes in data segment
+    - global data is declared outside any function, or in a static block
+    - whenever we exectue a function call, we have an activation call, local parameters declared on stack
+    - when exit stack, the stack stuff is removed
+    - can have arbitary size on the heap
+
+#include <string.h?
+char* s;
+s = (char*) malloc(1000);
+    - can input a string of 999 characters bc last string needs to be 0 to indicate end
+strcpy(s, "hello world\n")
+for (int n = 0; n < 12; n++)
+    putc(*(str));        # *s is the same as s[0] = 'h'  s[1] = 'e' = *(s+1) PARENTHESES MATTER  *s+1 = 'i'

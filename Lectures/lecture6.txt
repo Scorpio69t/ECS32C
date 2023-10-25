@@ -1,1 +1,5 @@
 Monday October 23
+Local variables are set aside in a stack
+- malloc(4) allocates 4 bytes
+- however, better practice to use malloc(sizeof(mt)) so that people don't 
+    find exploits based on miscalcualtions of memory
