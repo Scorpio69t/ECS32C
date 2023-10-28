@@ -9,27 +9,18 @@ void sum3(int a, int b, int c, int* sum) {
 
 
 int eachContains(char** strings, char target, unsigned numStrings, char** firstOffending){
-    for (int i; i < numStrings; i++) {
-        char currStr[] = strings[i];
-        int j = 0;
-        while (currStr[j] != '\0') {
-            if (currStr[j] == target) {
+    for (int i = 0; i < numStrings; i++) {
+        char* charptr = strings[i];
+        while (*charptr != '\0') {
+            if (*charptr == target) {
                 break;
-            j++;
+            charptr++;
             }
         }
-        firstOffending = &currStr[j];
+        *firstOffending = strings[i];
         return 0;
     }
     return 1;
 }
 
 
-
-int main(void) {
-    int s;
-    sum3(4, 10, -1, &s);
-    printf("%d\n", s);
-    sum3(0, 2, -10, &s);
-    printf("%d\n", s);
-}
