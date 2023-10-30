@@ -1,0 +1,62 @@
+October 30 Monday
+
+FILE* <- fopen(char* fileName, char* mode) #pointer to file name and pointer to mode
+        fclose(FILE * f)
+
+
+Example:
+$mcp infile.txt outfile.txt
+       argv[1]   argv[2]
+       char <-= fgetc(FILE *f)
+
+
+#include <stdio.h>
+
+int main(int argc, char** argv) {
+    FILE * inFile;
+    FILE * outFile
+    inFile = fopen(argv[1], "r");
+    outFile = fopen(argv[2], "w");
+    char c;
+    while(1) {
+        c = fgetc(inFile);
+        if (c == EOF) 
+            break;
+        fputc(c, outFile); 
+    }
+    fclose(inFile);
+    fclose(outFile);
+}
+
+
+
+int main(int argc, char** argv) {
+    FILE * inFile;
+    FILE * outFile;
+    if (argc != 1){
+        ShowUsage(argv[0]);
+        return(1);
+    }
+    if(!(inFIle = fopen(argv[1], "r"))) {#DId the input file fail to open
+        printf("Unable to open input file: %s\n", argv[1]);
+        return(1);
+    }
+    if (!(outFile = fopen(argv[2], "w")));{
+        printf .....
+        return(1);
+    }
+    while(1) {
+        c = fgetc(inFile);
+        if(c == EOF)
+            break
+        fputc(c, outFIle);
+    }
+    fclose(inFile);
+    fclose(outFile); 
+}
+
+
+void ShowUsage(char* Pname)
+    printf("USAGE: mcp <infile> <outFile>", Pname)
+
+mcpo <infile>[<outfile>] #Square brackets means that it is optional

@@ -24,3 +24,6 @@ int eachContains(char** strings, char target, unsigned numStrings, char** firstO
 }
 
 
+int filterOut(const char* inputFilename, const char* target, const char* outputFilename){
+    
+}
