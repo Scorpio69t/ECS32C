@@ -14,16 +14,13 @@ int eachContains(char** strings, char target, unsigned numStrings, char** firstO
         while (*charptr != '\0') {
             if (*charptr == target) {
                 break;
-            charptr++;
             }
+            charptr++;
         }
-        *firstOffending = strings[i];
-        return 0;
+        if (*charptr == '\0') {
+            *firstOffending = strings[i];
+            return 0;   
+        } 
     }
     return 1;
-}
-
-
-int filterOut(const char* inputFilename, const char* target, const char* outputFilename){
-    
 }
