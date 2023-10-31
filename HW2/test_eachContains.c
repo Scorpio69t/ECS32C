@@ -1,5 +1,7 @@
-#include <stdio.h>
 int eachContains(char** strings, char target, unsigned numStrings, char** firstOffending);
+
+#include <stdio.h>
+
 
 int main() {
     char* strings[] = {"abcde", "hi there jack", "apple", "banana"}; char* firstOffending ;

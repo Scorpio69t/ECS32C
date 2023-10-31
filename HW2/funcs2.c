@@ -38,11 +38,12 @@ int filterOut(const char* inputFilename, const char* target, const char* outputF
     while (fgets(currLine, sizeof(currLine), inFile) != NULL){
         int linePosition = 0;
         int targetPosition = 0;
-
+        int isMatch = 0;
         while (currLine[linePosition] != '\0') {
             if (currLine[linePosition] == target[targetPosition]) {
                 targetPosition++;
                 if (target[targetPosition] == '\0') {
+                    isMatch = 1;
                     break;
                 }
             } else {
@@ -50,8 +51,9 @@ int filterOut(const char* inputFilename, const char* target, const char* outputF
             }
             linePosition++;
         }
-
-        fputs(currLine, outFile);
+        if (!isMatch) {
+            fputs(currLine, outFile);
+        }
     }
     fclose(inFile);
     fclose(outFile);
