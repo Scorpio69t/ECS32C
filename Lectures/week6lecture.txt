@@ -1,0 +1,76 @@
+Monday 11/06
+- no assignments that include array based stacks
+
+struct node {
+    int data;
+    struct node* next;  //pointer to the next struct
+}
+struct node* head = NULL;   //global variable
+
+void push(int d){
+    struct node* n = malloc(sizeof(struct node));   //temp pointer, note that malloc can fail
+    n -> data = d;
+    n -> next = head;
+    head = n;
+}
+
+int pop(void) {
+    if (head){
+        struct node* n = head;
+        head = head > next;
+        int ret = n > data;
+        free(n);  //free the memory
+        return ret;
+    } else {
+        printf("Stack emply on pop\n");
+        exit(1);   
+    }
+}
+//Check for null head at client leve
+int isEmpty() {
+    return head == NULL;
+}
+
+What happens if we want to store something else on the stacks
+
+struct tempDataF {
+    int lo;
+    int hi;
+}
+
+struct node {
+    struct tempDataF* data;
+    struct node* next;
+}
+
+void push(struct tempDataF* d){  //passing in a pointer to a structure
+    struct node* n = malloc(sizeof(struct node));   //temp pointer, note that malloc can fail
+    n -> data = d;
+    n -> next = head;
+    head = n;
+}
+
+struct upDataF* pop(void) {
+    if (head){
+        struct node* n = head;
+        head = head -> next;
+        struct upDataF* ret = n -> data; 
+        free(n);  //free the memory
+        return ret;
+    } else {
+        printf("Stack emply on pop\n");
+        exit(1);   
+    }
+}
+
+
+int main (void) {
+    struct tempDataF* t = malloc(sizeof(struct tempDataF));
+    t -> hi = 65;
+    t -> lo = 50;
+    push(t);
+    struct tempDataF* n = pop();
+    printf("%d: %d: \n", n-> hi, n-> lo);
+    free(t);  // can also free(n) since they both point to the same block on the heap
+
+}

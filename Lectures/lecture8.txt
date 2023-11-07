@@ -60,3 +60,45 @@ void ShowUsage(char* Pname)
     printf("USAGE: mcp <infile> <outFile>", Pname)
 
 mcpo <infile>[<outfile>] #Square brackets means that it is optional
+
+November 1, Wednesday
+
+Struct - a collectio0n of related variables of possibly different types grouped together under a single name
+
+struct employee {
+    char fName[100];
+    char lName[100];
+    int age;
+}
+
+struct point {
+    int x;
+    int y;
+}
+
+struct triangle {
+    struct point ptA;
+    struct point ptB;
+    struct point ptC;
+}
+
+struct node {
+    int data;
+    struct index* next; #pointer to the next node, notice made a self reference in the 
+}
+
+the name of a struct is a shortcut to the structure of the struct
+
+struct point p2 = {0,0};
+struct triangle t;
+    t.ptA.x = 0;
+    t.ptB.y = 0;
+    t.ptB.x = 5;
+    t.ptB.y = 5;
+p2.x = 7;
+p2.y = 9;
+
+void initpoint(struct point* p) {
+    (*p).x = 0;
+    (*p).y = 0;
+}
