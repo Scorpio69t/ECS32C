@@ -10,6 +10,9 @@ struct node {
 };
 // global variables go here
 struct node* head = NULL;
+int maxStack;
+int currStackCount = 0;
+int *playerScores;
 // write these functions. This is a requirement. Your code must include the following functions and you must
 // invoke them to execute the stated behavior. 
 
@@ -30,10 +33,16 @@ void usage(){
 // pushes an integer onto the stack, exits with error if the stack is full
 //
 void push(int val){
-    struct node* n = malloc(sizeof(struct node));
-    n -> data = val;
-    n -> next = head;
-    head = n;
+    if (currStackCount == maxStack){
+        char* msg = "Stack is full";
+        fatal(msg);
+    } else {
+        struct node* n = malloc(sizeof(struct node));
+        n -> data = val;
+        n -> next = head;
+        head = n;
+        currStackCount++;
+    }
 }
 
 // returns an integer from the stack, exits with error if the stack is empty
@@ -57,7 +66,7 @@ void fillStack(int argc, char** argv){
     int nPlayers = atoi(argv[1]);
     int totalCards = nPlayers * 5;
     int nGivenCards = argc - 2;
-    if (totalCards < nGivenCards){
+    if (totalCards != nGivenCards){
         char* msg = "Invalid number of cards given";
         fatal(msg);
     }
@@ -98,18 +107,19 @@ void showStack(){
 
 // displays scores for all players
 //
-void showScores(int nPlayers, int* playerScores){
+void showScores(int nPlayers){
     for (int i = 0; i < nPlayers; i++) {
         int currPlayerScore = playerScores[i];
         int currPlayer = i + 1;
         printf("Player %d scored %d\n", currPlayer, currPlayerScore);
     }
+    printf("\n");
 }
 
 // runs one game for the provided number of players reporting each card
 // drawn by each player
 //
-void runGame(int nPlayers, int *playerScores){
+void runGame(int nPlayers){
     int nDraws = nPlayers * 5;
     int playerNum = 1;
     int nCardsDrawn = 1;
@@ -125,8 +135,6 @@ void runGame(int nPlayers, int *playerScores){
         }
     }
     printf("\n");
-    showScores(nPlayers, playerScores);
-    printf("\n");
 }
 
 // computes the winning player and shows the results, pay careful
@@ -139,17 +147,17 @@ void runGame(int nPlayers, int *playerScores){
 int main(int argc, char** argv){
     srand(time(NULL));
     int nPlayers = atoi(argv[1]);
+    maxStack = nPlayers * 5;
     if (nPlayers < 2) {
         usage();
     }
     if (argc > 2) {
         fillStack(argc, argv);
-        showStack();
     } else {
         fillStackWithRandomNumbers(nPlayers);
     }
-    int *playerScores = calloc(nPlayers, sizeof(int));
-    runGame(nPlayers, playerScores);
-    // showWinners(nPlayers, playerScores);
+    playerScores = calloc(nPlayers, sizeof(int));
+    runGame(nPlayers);
+    showScores(nPlayers);
     free(playerScores);
 }
