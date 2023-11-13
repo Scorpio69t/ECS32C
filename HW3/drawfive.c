@@ -58,7 +58,7 @@ int pop(){
         free(n);
         return ret;
     } else {
-        printf("Error: Stack is empty!");
+        printf("Error: Stack is empty!\n");
         exit(1);
     }
 }
@@ -161,6 +161,7 @@ void showWinners(int nPlayers){
                 printf(", %d", highScoreindex[j] + 1);
             }
         }
+        printf("\n");
     }
 
     free(highScoreindex);
