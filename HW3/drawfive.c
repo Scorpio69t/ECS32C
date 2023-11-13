@@ -12,7 +12,10 @@ struct node {
 struct node* head = NULL;
 int maxStack;
 int currStackCount = 0;
-int *playerScores;
+int* playerScores;
+int* highScoreindex;
+int nMaxScore = 0; //counts how many players have this same max score
+
 // write these functions. This is a requirement. Your code must include the following functions and you must
 // invoke them to execute the stated behavior. 
 
@@ -26,7 +29,7 @@ void fatal(char* msg){
 // instructs user how to use the program and exits returning an error to the os
 //
 void usage(){
-    printf("drawfive <number of players> [list of cards]\n  The number of players must be greater than 2\n");
+    printf("drawfive <number of players> [list of cards]\n         The number of players must be greater than 2\n");
     exit(1);
 }
 
@@ -55,7 +58,7 @@ int pop(){
         free(n);
         return ret;
     } else {
-        printf("Stack is empty");
+        printf("Error: Stack is empty!");
         exit(1);
     }
 }
@@ -66,7 +69,7 @@ void fillStack(int argc, char** argv){
     int nPlayers = atoi(argv[1]);
     int totalCards = nPlayers * 5;
     int nGivenCards = argc - 2;
-    if (totalCards != nGivenCards){
+    if (totalCards < nGivenCards){
         char* msg = "Invalid number of cards given";
         fatal(msg);
     }
@@ -140,9 +143,37 @@ void runGame(int nPlayers){
 // computes the winning player and shows the results, pay careful
 // attention to the output, the detail does matter
 //
-// void showWinners(int nPlayers, int* playerScores){
-//     printf("helloworld");
-// }
+void showWinners(int nPlayers){
+    highScoreindex = calloc(nPlayers, sizeof(int));
+    int currMaxScore = 0;  
+    for (int i = 0; i < nPlayers; i++) {
+        if (playerScores[i] > currMaxScore) {
+            currMaxScore = playerScores[i];
+            highScoreindex[0] = i;
+            nMaxScore = 1;
+        } else if (playerScores[i] == currMaxScore) {
+            highScoreindex[nMaxScore] = i;
+            nMaxScore++;
+        }
+    }
+    if (nMaxScore == 1) {
+        int playerNum = highScoreindex[0] + 1;
+        printf("Player %d won with a score of %d\n", playerNum, currMaxScore);
+    } else if (nMaxScore == 2) {
+        printf("Players %d and %d tied with a score of %d\n", highScoreindex[0] + 1, highScoreindex[1] + 1, currMaxScore);
+    } else {
+        printf("Players %d", highScoreindex[0] + 1);
+        for (int j = 1; j < nMaxScore; j++) {
+            if (highScoreindex[j] == nMaxScore - 1) {
+                printf(" and %d tied with a score of %d\n", highScoreindex[j] + 1, currMaxScore);
+            } else {
+                printf(", %d", highScoreindex[j] + 1);
+            }
+        }
+    }
+
+    free(highScoreindex);
+}
 
 int main(int argc, char** argv){
     srand(time(NULL));
@@ -159,5 +190,6 @@ int main(int argc, char** argv){
     playerScores = calloc(nPlayers, sizeof(int));
     runGame(nPlayers);
     showScores(nPlayers);
+    showWinners(nPlayers);
     free(playerScores);
 }
