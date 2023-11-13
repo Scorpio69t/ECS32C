@@ -66,22 +66,13 @@ int pop(){
 // fills stack with parameters provided from the command line
 //
 void fillStack(int argc, char** argv){
-    int nPlayers = atoi(argv[1]);
-    int totalCards = nPlayers * 5;
-    int nGivenCards = argc - 2;
-    if (totalCards < nGivenCards){
-        char* msg = "Invalid number of cards given";
-        fatal(msg);
-    }
     for (int i = 2; i < argc; i++) {
         if (atoi(argv[i]) < 1 || atoi(argv[i]) > 10){
             char* msg = "Invalid card number given";
             fatal(msg);
         } else {
-            struct node* n = malloc(sizeof(struct node));
-            n -> data = atoi(argv[i]); //This will ensure that there are no 0s
-            n -> next = head;
-            head = n;
+            int val = atoi(argv[i]);
+            push(val);
         }
     }
 }
