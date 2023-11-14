@@ -161,9 +161,7 @@ void showWinners(int nPlayers){
                 printf(", %d", highScoreindex[j] + 1);
             }
         }
-        printf("\n");
     }
-
     free(highScoreindex);
 }
 

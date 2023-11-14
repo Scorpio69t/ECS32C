@@ -39,21 +39,27 @@ void usage(){
 
 void push(int val) {
     if (val > 52 || val < 1) {
-        char* msg = "Card index is out of range!";
+        char* msg = "Invalid card index";
         fatal(msg);
     } else if (currStackCount == maxStack) {
-        char* msg = "Stack is full";
+        char* msg = "Stack is full!";
         fatal(msg);
     }
     struct card* pointedCard = malloc(sizeof(struct card));
     struct node* n = malloc(sizeof(struct node));
-    int rankIndex = val % 13;
-    int suitIndex = val / 13;
-    strncpy(pointedCard -> rank, ranks[rankIndex - 1], sizeof(pointedCard -> rank) - 1); //Assign rank to card struct
+    int suitIndex = (val - 1) / 13;
+    int rankIndex = (val - 1) % 13;
+    int cardValue;
+    if (val % 13 == 0) {
+        cardValue = 13;
+    } else {
+        cardValue = val % 13;
+    }
+    strncpy(pointedCard -> rank, ranks[rankIndex], sizeof(pointedCard -> rank) - 1); //Assign rank to card struct
     pointedCard -> rank[sizeof(pointedCard->rank) - 1] = '\0';
     strncpy(pointedCard -> suit, suits[suitIndex], sizeof(pointedCard -> suit) - 1); //Assign suit to card struct
     pointedCard -> suit[sizeof(pointedCard -> suit) - 1] = '\0';
-    pointedCard -> value = rankIndex; //Will just use rankIndex to assign value which is same as rank
+    pointedCard -> value = cardValue; //Will just use rankIndex to assign value which is same as rank
     n -> pointedCard = pointedCard;
     n -> next = head;
     head = n;   
